@@ -1,7 +1,6 @@
 package com;
 
 import java.util.List;
-import java.util.Arrays;
 
 /**
  * Public class containing various searching algorithms
@@ -44,6 +43,7 @@ public class SearchAlgorithm {
             if (rightPart.size() > 0) {
                 int rightIndex = binarySearch(rightPart, searchedNumber);
                 if (rightIndex > -1) {
+                    // return full index by taking into account the middle index
                     return rightIndex + middleIndex + 1;
                 }
             }
