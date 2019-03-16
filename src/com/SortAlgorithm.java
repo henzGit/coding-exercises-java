@@ -30,7 +30,7 @@ public class SortAlgorithm {
 
     /**
      * Sorting input array using Selection Sort Algorithm
-     * Complexity is O(n*n)
+     * Big O Complexity is n*n
      * @param inputArray array to be sorted
      */
     public static void selectionSort(List<Integer> inputArray) {
@@ -56,7 +56,7 @@ public class SortAlgorithm {
 
     /**
      * Sorting input array using Insertion Sort Algorithm
-     * Complexity is O(n*n)
+     * Big O Complexity is n*n
      * @param inputArray array to be sorted
      */
     public static void insertionSort(List<Integer> inputArray){
@@ -82,6 +82,7 @@ public class SortAlgorithm {
 
     /**
      * Sorting input array using Merge Sort Algorithm
+     * Big O Complexity is n*log(n)
      * @param inputArray array to be sorted
      * @return sorted array
      */
@@ -109,8 +110,9 @@ public class SortAlgorithm {
 
     /**
      * Merge two input arrays (part of Merge Sort Algorithm)
-     * @param array1
-     * @param array2
+     * Big O Complexity is n*log(n)
+     * @param array1 array1 to be merged
+     * @param array2 array1 to be merged
      * @return a merged array
      */
     private static List<Integer> merge(List<Integer> array1, List<Integer> array2){
@@ -153,6 +155,7 @@ public class SortAlgorithm {
 
     /**
      * Sorting input array using Quick Sort Algorithm
+     * Big O Complexity is n*log(n)
      * @param inputArray array to be sorted
      */
     public static void quickSort(List<Integer> inputArray){
