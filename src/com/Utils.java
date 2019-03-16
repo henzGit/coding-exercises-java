@@ -15,7 +15,7 @@ public class Utils {
      * @param upperLimit upper limit as the max value of the random number
      * @return list of random random numbers
      */
-    public static List generateRandomNumbers(int amountOfRandomNumber, int upperLimit){
+    public static List<Integer> generateRandomNumbers(int amountOfRandomNumber, int upperLimit){
         List randomNumbers = new ArrayList();
         Random rand = new Random();
 
