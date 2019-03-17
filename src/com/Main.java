@@ -7,8 +7,8 @@ import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
 import com.dynamic_programming.FindMaxValue;
-import com.dynamic_programming.FindPathInMaze.Point;
-import com.dynamic_programming.FindPathInMaze;
+import com.dynamic_programming.FindPath.Point;
+import com.dynamic_programming.FindPath;
 import com.dynamic_programming.FindMaxValue.StockOption;
 
 public class Main {
@@ -70,7 +70,7 @@ public class Main {
         };
 
         // test find path in maze problem
-        List<Point> path = FindPathInMaze.getPathFromBooleanMaze(maze);
+        List<Point> path = FindPath.getPathFromBooleanMaze(maze);
         System.out.println("path: " + path.toString());
 
         ///////////////////// Test find max profit stock option //////////////////////

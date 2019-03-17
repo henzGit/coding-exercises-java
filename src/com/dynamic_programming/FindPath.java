@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Public class used to find path in a maze
  */
-public class FindPathInMaze {
+public class FindPath {
 
     public static class Point {
         private int row;
