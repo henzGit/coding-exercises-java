@@ -88,11 +88,11 @@ public class Main {
             StockOption stockOption = new StockOption(floats.get(i), times.get(i));
             stockOptions.add(stockOption);
         }
-        float maxProfit = FindMaxValue.maxProfitFromStockOptions(stockOptions);
+        float maxProfit = FindMaxValue.maxProfitStockOptions(stockOptions);
 
         ///////////////////// Test find max profit with two transactions //////////////////////
         int prices[] = {2, 30, 15, 10, 8, 25, 80};
-        float profit = FindMaxValue.maxProfitTwoTransactions(prices);
+        float profit = FindMaxValue.maxProfitWithMaxTwoTransactions(prices);
         System.out.println("Maximum Profit = "+ profit);
 
     }

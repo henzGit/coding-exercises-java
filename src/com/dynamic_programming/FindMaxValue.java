@@ -30,7 +30,7 @@ public class FindMaxValue {
      * @param stockOptions list of stock option prices in time
      * @return max profit
      */
-    public static float maxProfitFromStockOptions(List<StockOption> stockOptions) {
+    public static float maxProfitStockOptions(List<StockOption> stockOptions) {
         float maxProfit = 0.0f;
         float minPrice = 10000.0f;
 
@@ -49,12 +49,12 @@ public class FindMaxValue {
     }
 
     /**
-     * Returns maximum profit with two transactions on a given
+     * Returns maximum profit with maximum two transactions on a given
      * list of stock prices, price[0..n-1]
      * @param price array of prices in linear time
      * @return max profit
      */
-    public static int maxProfitTwoTransactions(int price[])
+    public static int maxProfitWithMaxTwoTransactions(int price[])
     {
         int n = price.length;
 
