@@ -10,10 +10,10 @@ import java.util.Random;
 public class Utils {
 
     /**
-     * Generate random numbers for a given amount and upper limit
-     * @param amountOfRandomNumber amount of random number to be generated
-     * @param upperLimit upper limit as the max value of the random number
-     * @return list of random random numbers
+     * Generate random integers for a given amount and upper limit
+     * @param amountOfRandomNumber amount of random integer to be generated
+     * @param upperLimit upper limit as the max value of the random integer
+     * @return list of random integers
      */
     public static List<Integer> generateRandomIntegers(int amountOfRandomNumber, int upperLimit){
         List randomNumbers = new ArrayList();
