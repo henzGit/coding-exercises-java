@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 /**
  * Public class used to find max profit given values of a stock option in time
  */
-public class FindMaxProfitStockOption {
+public class FindMaxValue {
 
     public static class StockOption {
         private int price; // price of a stock option in Japanese Yen
@@ -30,7 +30,7 @@ public class FindMaxProfitStockOption {
      * @param stockOptions list of stock option prices in time
      * @return max profit
      */
-    public static float findMaxProfitFromStockOptions(List<StockOption> stockOptions) {
+    public static float maxProfitFromStockOptions(List<StockOption> stockOptions) {
         float maxProfit = 0.0f;
         float minPrice = 10000.0f;
 

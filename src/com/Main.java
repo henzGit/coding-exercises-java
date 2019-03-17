@@ -6,10 +6,10 @@ import java.util.List;
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
-import com.dynamic_programming.FindMaxProfitStockOption;
+import com.dynamic_programming.FindMaxValue;
 import com.dynamic_programming.FindPathInMaze.Point;
 import com.dynamic_programming.FindPathInMaze;
-import com.dynamic_programming.FindMaxProfitStockOption.StockOption;
+import com.dynamic_programming.FindMaxValue.StockOption;
 
 public class Main {
 
@@ -88,11 +88,11 @@ public class Main {
             StockOption stockOption = new StockOption(floats.get(i), times.get(i));
             stockOptions.add(stockOption);
         }
-        float maxProfit = FindMaxProfitStockOption.findMaxProfitFromStockOptions(stockOptions);
+        float maxProfit = FindMaxValue.maxProfitFromStockOptions(stockOptions);
 
         ///////////////////// Test find max profit with two transactions //////////////////////
         int prices[] = {2, 30, 15, 10, 8, 25, 80};
-        float profit = FindMaxProfitStockOption.maxProfitTwoTransactions(prices);
+        float profit = FindMaxValue.maxProfitTwoTransactions(prices);
         System.out.println("Maximum Profit = "+ profit);
 
     }
