@@ -61,7 +61,7 @@ public class Main {
     }
 
     public static void testOther() {
-        //// Test find path in a maze
+        //////////////////////// Test find path in a maze //////////////////////
         // create a two-dimensional boolean maze
         boolean[][] maze = new boolean[][]{
                 {true, true, false},
@@ -73,7 +73,7 @@ public class Main {
         List<Point> path = FindPathInMaze.getPathFromBooleanMaze(maze);
         System.out.println("path: " + path.toString());
 
-        //// Test find max profit stock option
+        ///////////////////// Test find max profit stock option //////////////////////
         // test find max profit stock option
         int numberPoints = 10;
         // generate random floats
@@ -88,10 +88,13 @@ public class Main {
             StockOption stockOption = new StockOption(floats.get(i), times.get(i));
             stockOptions.add(stockOption);
         }
-        System.out.println("stockOptions: " + stockOptions);
+        float maxProfit = FindMaxProfitStockOption.findMaxProfitFromStockOptions(stockOptions);
 
-        float maxProfit = FindMaxProfitStockOption.findMaxProfit(stockOptions);
-        System.out.println("maxProfit: " + maxProfit);
+        ///////////////////// Test find max profit with two transactions //////////////////////
+        int prices[] = {2, 30, 15, 10, 8, 25, 80};
+        float profit = FindMaxProfitStockOption.maxProfitTwoTransactions(prices);
+        System.out.println("Maximum Profit = "+ profit);
+
     }
 
     public static void main(String[] args) {
