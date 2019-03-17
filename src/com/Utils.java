@@ -1,5 +1,7 @@
 package com;
 
+import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -43,6 +45,22 @@ public class Utils {
         }
 
         return randomFloats;
+    }
+
+    /**
+     * Generate a series of LocalDateTime in ascending order in hours
+     * @param numberPoints number of points in the list
+     * @return list containing LocalDateTime object
+     */
+    public static List<LocalDateTime> generateDateTimes(int numberPoints) {
+        LocalDateTime now = LocalDateTime.now();
+        List<LocalDateTime> times = new LinkedList<>();
+        int i = 0;
+        while (i < numberPoints) {
+            times.add(now.plusHours(i));
+            i++;
+        }
+        return times;
     }
 
 }
