@@ -12,7 +12,7 @@ public class Main {
     public static void testSortAlgorithms() {
         // generate random numbers
         int n = 10;
-        List<Integer> inputSort = Utils.generateRandomNumbers(n, n);
+        List<Integer> inputSort = Utils.generateRandomIntegers(n, n);
         System.out.println("inputSort: " + inputSort);
 
         // test Bubble Sort algorithm
@@ -39,7 +39,7 @@ public class Main {
     public static void testSearchAlgorithms() {
         // generate random numbers
         int n = 10;
-        List<Integer> inputSearch = Utils.generateRandomNumbers(n, n);
+        List<Integer> inputSearch = Utils.generateRandomIntegers(n, n);
 
         int searchNumber = 5;
 
@@ -70,7 +70,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
         
+
     }
 }
