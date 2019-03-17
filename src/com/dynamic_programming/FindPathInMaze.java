@@ -1,4 +1,4 @@
-package com.other;
+package com.dynamic_programming;
 
 import java.util.ArrayList;
 import java.util.HashSet;

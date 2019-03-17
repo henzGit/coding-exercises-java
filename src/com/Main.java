@@ -6,10 +6,10 @@ import java.util.List;
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
-import com.other.FindMaxProfitStockOption;
-import com.other.FindPathInMaze.Point;
-import com.other.FindPathInMaze;
-import com.other.FindMaxProfitStockOption.StockOption;
+import com.dynamic_programming.FindMaxProfitStockOption;
+import com.dynamic_programming.FindPathInMaze.Point;
+import com.dynamic_programming.FindPathInMaze;
+import com.dynamic_programming.FindMaxProfitStockOption.StockOption;
 
 public class Main {
 
