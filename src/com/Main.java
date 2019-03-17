@@ -1,11 +1,15 @@
 package com;
 
+import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
+import com.other.FindMaxProfitStockOption;
 import com.other.FindPathInMaze.Point;
 import com.other.FindPathInMaze;
+import com.other.FindMaxProfitStockOption.StockOption;
 
 public class Main {
 
@@ -57,6 +61,7 @@ public class Main {
     }
 
     public static void testOther() {
+        //// Test find path in a maze
         // create a two-dimensional boolean maze
         boolean[][] maze = new boolean[][]{
                 {true, true, false},
@@ -67,10 +72,28 @@ public class Main {
         // test find path in maze problem
         List<Point> path = FindPathInMaze.getPathFromBooleanMaze(maze);
         System.out.println("path: " + path.toString());
+
+        //// Test find max profit stock option
+        // test find max profit stock option
+        int numberPoints = 10;
+        // generate random floats
+        List<Float> floats = Utils.generateRandomFloats(numberPoints, 100);
+
+        // generate list of DateTimes
+        List<LocalDateTime> times = Utils.generateDateTimes(numberPoints);
+
+        // generate list of stock option prices
+        List<StockOption> stockOptions = new LinkedList<>();
+        for (int i = 0; i < numberPoints; i++) {
+            StockOption stockOption = new StockOption(floats.get(i), times.get(i));
+            stockOptions.add(stockOption);
+        }
+        System.out.println("stockOptions: " + stockOptions);
+
+        float maxProfit = FindMaxProfitStockOption.findMaxProfit(stockOptions);
+        System.out.println("maxProfit: " + maxProfit);
     }
 
     public static void main(String[] args) {
-        
-
     }
 }
