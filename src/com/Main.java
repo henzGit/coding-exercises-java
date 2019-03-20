@@ -1,6 +1,7 @@
 package com;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import com.algorithm.SortAlgorithm;
@@ -10,6 +11,7 @@ import com.dynamic_programming.FindMaxValue;
 import com.dynamic_programming.FindPath.Point;
 import com.dynamic_programming.FindPath;
 import com.dynamic_programming.FindMaxValue.StockOption;
+import com.dynamic_programming.StringConstruction;
 
 public class Main {
 
@@ -60,7 +62,7 @@ public class Main {
         System.out.println("test get customHashMap: " + customHashMap.get("test2"));
     }
 
-    public static void testOther() {
+    public static void testFindPath() {
         //////////////////////// Test find path in a maze //////////////////////
         // create a two-dimensional boolean maze
         boolean[][] maze = new boolean[][]{
@@ -72,7 +74,9 @@ public class Main {
         // test find path in maze problem
         List<Point> path = FindPath.getPathFromBooleanMaze(maze);
         System.out.println("path: " + path.toString());
+    }
 
+    public static void testFindMaxValue() {
         ///////////////////// Test find max profit stock option //////////////////////
         // test find max profit stock option
         int numberPoints = 10;
@@ -97,6 +101,21 @@ public class Main {
 
     }
 
+    public static void testStringConstruction() {
+        String[] substrings = {
+                "BA", "T", "AD", "C", "MA", "N", "MA", "XXXX", "ATMA"
+        };
+        String stringToBeConstructed = "BATMAN";
+        boolean boolResult = StringConstruction.isStringConstructableFromSubstrings(
+                stringToBeConstructed, Arrays.asList(substrings)
+        );
+    }
+
+    public static void testOther() {
+
+    }
+
     public static void main(String[] args) {
+        testStringConstruction();
     }
 }
