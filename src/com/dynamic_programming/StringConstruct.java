@@ -11,14 +11,16 @@ public class StringConstruct {
      * @return true if string is constructable from substrings, otherwise false
      */
     public static boolean isStringConstructableFromSubstrings(
-            String targetString, List<String> substrings)
-    {
+            String targetString, List<String> substrings
+    ) {
+        // map usage of input substrings
         Map<Integer, Map<String, Integer>> inSubstrMap =
-                mapUsageSubstrings(substrings);
+                mapUsageStrings(substrings);
 
-        List<Integer> inSubstrMapKeys = new ArrayList<>();
-        inSubstrMapKeys.addAll(inSubstrMap.keySet());
+        List<Integer> inSubstrMapKeys = new ArrayList<>(inSubstrMap.keySet());
 
+        // find possible indices combination based on length of
+        // input substrings
         List<List<Integer>> indicesList = findCombinationIndices(
                 targetString.length(), inSubstrMapKeys
         );
@@ -26,10 +28,10 @@ public class StringConstruct {
         // check possible substrings from indices list
         for (List<Integer> indices: indicesList) {
             int beginIndex, endIndex = 0;
-            List<String> indicesSubstr = new ArrayList<>();
+            List<String> indicesSubstrList = new ArrayList<>();
             // create list of substrings
             for(int i = 0; i < indices.size(); i++) {
-                String substring = "";
+                String substrFromIndices = "";
                 // for first index
                 if (i == 0) {
                     beginIndex = 0;
@@ -39,16 +41,16 @@ public class StringConstruct {
                     beginIndex = endIndex;
                     endIndex = beginIndex + indices.get(i);
                 }
-                substring = targetString.substring(beginIndex, endIndex);
-                indicesSubstr.add(substring);
+                // get substring from begin index and end index
+                substrFromIndices = targetString.substring(beginIndex, endIndex);
+                // add to list of substrings
+                indicesSubstrList.add(substrFromIndices);
             }
-            Map<Integer, Map<String, Integer>> tmpSubstrMap = mapUsageSubstrings(
-                    indicesSubstr
-            );
+            Map<Integer, Map<String, Integer>> tmpSubstrMap
+                    = mapUsageStrings(indicesSubstrList);
 
             // check if tmpSubstrMap is a subset of inSubstrMap
             if (isSubsetOf(tmpSubstrMap, inSubstrMap)) { return true; }
-
         }
 
         return false;
@@ -89,19 +91,16 @@ public class StringConstruct {
                 if (!containerMapContent.containsKey(keyComponent)) {
                     return false;
                 }
-
                 // 2nd condition, check if value of key in component is smaller
                 // than key in container
-                if ( componentMapContent.get(keyComponent)
+                if (componentMapContent.get(keyComponent)
                                 > containerMapContent.get(keyComponent)) {
                     return false;
                 }
             }
         }
-
         return true;
     }
-
 
     /**
      * initialize map to store all combinations of substrings
@@ -109,16 +108,16 @@ public class StringConstruct {
      * map[1] = {"a": 1, "b": 2}
      * map[2] = {"ab": 1, "bc": 3,}
      * map[4] = {"abcd": 3, "rwee": 5}
-     * @param substrings list of input substrings
+     * @param inStrings list of input substrings
      * @return map with given structure
      */
-    private static Map<Integer, Map<String, Integer>> mapUsageSubstrings(
-            List<String> substrings
+    private static Map<Integer, Map<String, Integer>> mapUsageStrings(
+            List<String> inStrings
     ) {
         Map<Integer, Map<String, Integer>> outerMap =
                 new TreeMap<>(Collections.reverseOrder());
 
-        for (String subString: substrings) {
+        for (String subString: inStrings) {
             int outerMapKey = subString.length();
             if (!outerMap.containsKey(outerMapKey)) {
                 Map<String, Integer> internalMap = new TreeMap<>();
@@ -150,10 +149,12 @@ public class StringConstruct {
      * @return list containing possible indices combination
      */
     private static List<List<Integer>> findCombinationIndices(
-            int targetLength, List<Integer> possibleLengths) {
+            int targetLength, List<Integer> possibleLengths
+    ) {
         List<List<Integer>> returnList = new ArrayList<>();
 
         LinkedList<List<Integer>> queue = new LinkedList<>();
+        // initialize queue with empty list
         queue.add(new ArrayList<>());
 
         while(!queue.isEmpty()) {
@@ -163,7 +164,7 @@ public class StringConstruct {
                                         .sum();
             for (Integer length: possibleLengths) {
                 int nextSum = sumCurrIndices + length;
-                // initialize next indices
+                // initialize next indices with a new list object
                 List<Integer> nextIndices = new ArrayList<>(currIndices);
 
                 // add to return list if next sum of indices is equal to target length
