@@ -117,7 +117,7 @@ public class Main {
 
     public static void testOther() {
         // test find anagrams in dict
-        String[] words = {"cat", "bac", "test", "act", "demon", "tset"};
+        String[] words = {"cat", "bac", "test", "act", "demon", "tset", "act", "tac"};
         List<String> wordList = new ArrayList<>(Arrays.asList(words));
         List<String> anagrams = FindAnagramsInDict.find(wordList);
         System.out.println("anagrams: " + anagrams);
