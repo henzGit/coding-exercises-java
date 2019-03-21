@@ -2,7 +2,7 @@ package com.dynamic_programming;
 
 import java.util.*;
 
-public class StringConstruction {
+public class StringConstruct {
 
     /**
      * Check if string can be constructed from subtrings

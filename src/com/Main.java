@@ -11,7 +11,7 @@ import com.dynamic_programming.FindMaxValue;
 import com.dynamic_programming.FindPath.Point;
 import com.dynamic_programming.FindPath;
 import com.dynamic_programming.FindMaxValue.StockOption;
-import com.dynamic_programming.StringConstruction;
+import com.dynamic_programming.StringConstruct;
 
 public class Main {
 
@@ -101,13 +101,13 @@ public class Main {
 
     }
 
-    public static void testStringConstruction() {
+    public static void testStringConstruct() {
         String[] substrings = {
                 "B", "T", "A", "C", "MA", "N", "M", "XXXX", "ATMA"
         };
         String stringToBeConstructed = "BATMAN";
         boolean canStringBeConstructed =
-                StringConstruction.isStringConstructableFromSubstrings(
+                StringConstruct.isStringConstructableFromSubstrings(
                     stringToBeConstructed, Arrays.asList(substrings)
         );
     }
@@ -117,6 +117,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testStringConstruction();
+        testStringConstruct();
     }
 }
