@@ -1,12 +1,14 @@
 package com;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
+import com.dynamic_programming.FindAnagramsInDict;
 import com.dynamic_programming.FindMaxValue;
 import com.dynamic_programming.FindPath.Point;
 import com.dynamic_programming.FindPath;
@@ -105,18 +107,23 @@ public class Main {
         String[] substrings = {
                 "B", "T", "A", "C", "MA", "N", "M", "XXXX", "ATMA"
         };
-        String stringToBeConstructed = "BATMAN";
+        String stringToBeConstructed = "BATMANXXCX";
         boolean canStringBeConstructed =
                 StringConstruct.isStringConstructableFromSubstrings(
                     stringToBeConstructed, Arrays.asList(substrings)
         );
+        System.out.println("canStringBeConstructed: " + canStringBeConstructed);
     }
 
     public static void testOther() {
-
+        // test find anagrams in dict
+        String[] words = {"cat", "bac", "test", "act", "demon", "tset"};
+        List<String> wordList = new ArrayList<>(Arrays.asList(words));
+        List<String> anagrams = FindAnagramsInDict.find(wordList);
+        System.out.println("anagrams: " + anagrams);
     }
 
     public static void main(String[] args) {
-        testStringConstruct();
+        testOther();
     }
 }
