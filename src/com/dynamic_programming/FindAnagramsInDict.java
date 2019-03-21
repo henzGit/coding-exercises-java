@@ -10,7 +10,7 @@ public class FindAnagramsInDict {
      * @return list of anagrams
      */
     public static List<String> find(List<String> wordList) {
-        Set<String> seenWords = new TreeSet<>();
+        Map<Integer, Set<String>> dict = new TreeMap<>();
         Set<String> anagrams = new TreeSet<>();
 
         for (String word: wordList) {
@@ -24,16 +24,29 @@ public class FindAnagramsInDict {
             // create a new string with sorted char array
             String sortedStr = new String(tempArr);
 
-            if (!seenWords.contains(sortedStr)) {
-                seenWords.add(sortedStr);
+            // calculate hashcode of sorted string
+            int sortedStrHashCode = sortedStr.hashCode();
+
+            // if hashcode does not yet exist in dict
+            // initialize set and add first word
+            // otherwise, get the set and add word into it
+            if (!dict.containsKey(sortedStrHashCode)) {
+                Set<String> tmpSet = new TreeSet<>();
+                tmpSet.add(word);
+                dict.put(sortedStrHashCode, tmpSet);
             } else {
-                if (!anagrams.contains(sortedStr)) {
-                    anagrams.add(sortedStr);
-                }
+                Set<String> tmpSet = dict.get(sortedStrHashCode);
+                tmpSet.add(word);
             }
         }
 
+        // iterate over the dict key to find anagrams
+        for (Set<String> dictValues: dict.values()) {
+            // anagrams are only for dictValues with
+            if (dictValues.size() > 1) {
+                anagrams.addAll(dictValues);
+            }
+        }
         return new ArrayList<>(anagrams);
     }
-
 }
