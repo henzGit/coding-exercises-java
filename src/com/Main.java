@@ -103,11 +103,12 @@ public class Main {
 
     public static void testStringConstruction() {
         String[] substrings = {
-                "BA", "T", "AD", "C", "MA", "N", "MA", "XXXX", "ATMA"
+                "B", "T", "A", "C", "MA", "N", "M", "XXXX", "ATMA"
         };
         String stringToBeConstructed = "BATMAN";
-        boolean boolResult = StringConstruction.isStringConstructableFromSubstrings(
-                stringToBeConstructed, Arrays.asList(substrings)
+        boolean canStringBeConstructed =
+                StringConstruction.isStringConstructableFromSubstrings(
+                    stringToBeConstructed, Arrays.asList(substrings)
         );
     }
 
