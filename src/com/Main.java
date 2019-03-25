@@ -1,18 +1,16 @@
 package com;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
-import com.dynamic_programming.FindAnagramsInDict;
+import com.dynamic_programming.FindCombination;
 import com.dynamic_programming.FindMaxValue;
 import com.dynamic_programming.FindPath.Point;
 import com.dynamic_programming.FindPath;
-import com.dynamic_programming.FindMaxValue.StockOption;
+import com.dynamic_programming.FindMaxValue.*;
 import com.dynamic_programming.StringConstruct;
 
 public class Main {
@@ -101,6 +99,10 @@ public class Main {
         float profit = FindMaxValue.maxProfitWithMaxTwoTransactions(prices);
         System.out.println("Maximum Profit = "+ profit);
 
+        ///////////////////// Test find max product of three integers //////////////////////
+        int[] inputInts = new int[] {-100, 100, 200, 9, 2};
+        int maxProducts = FindMaxValue.findMaxProductsThreeInts(inputInts);
+        System.out.println("maxProducts: " + maxProducts);
     }
 
     public static void testStringConstruct() {
@@ -115,15 +117,19 @@ public class Main {
         System.out.println("canStringBeConstructed: " + canStringBeConstructed);
     }
 
-    public static void testOther() {
+    public static void testFindCombination() {
         // test find anagrams in dict
         String[] words = {"cat", "bac", "test", "act", "demon", "tset", "act", "tac"};
         List<String> wordList = new ArrayList<>(Arrays.asList(words));
-        List<String> anagrams = FindAnagramsInDict.find(wordList);
+        List<String> anagrams = FindCombination.findAnagramInDict(wordList);
         System.out.println("anagrams: " + anagrams);
     }
 
-    public static void main(String[] args) {
-        testOther();
+    public static void testOther() {
     }
+
+    public static void main(String[] args) {
+
+    }
+
 }
