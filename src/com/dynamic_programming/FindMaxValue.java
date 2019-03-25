@@ -1,7 +1,10 @@
 package com.dynamic_programming;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.time.LocalDateTime;
+import java.util.stream.IntStream;
 
 /**
  * Public class used to find max profit given values of a stock option in time
@@ -99,4 +102,108 @@ public class FindMaxValue {
         return result;
     }
 
+    /**
+     * Given a list of integers which can be either zero or negative value
+     * find the maximum value as the result of multiplication of three integers
+     * @return maximum products of three integers multiplication
+     */
+    public static int findMaxProductsThreeInts(int[] inputInts) {
+        int highestProduct = -1000000000;
+
+        boolean zeroExist = false;
+        // three integers with max positive value
+        List<Integer> maxPositiveValues = new ArrayList<>();
+
+        // three integers with min positive value
+        List<Integer> minPositiveValues = new ArrayList<>();
+
+        // three integers with max negative value
+        List<Integer> maxNegativeValues = new ArrayList<>();
+
+        // three integers with min negative value
+        List<Integer> minNegativeValues = new ArrayList<>();
+
+        // if input integers is not enough
+        if (inputInts.length < 3) {
+            return -1;
+        }
+
+        // if only 3 values exist
+        if (inputInts.length == 3) {
+            return inputInts[0] * inputInts[1] * inputInts[2];
+        }
+
+        // categorize input integers
+        for (int currInt: inputInts) {
+            if (currInt == 0) {
+                zeroExist = true;
+            } else if (currInt > 0) {
+                maxPositiveValues.add(currInt);
+                minPositiveValues.add(currInt);
+                Collections.sort(maxPositiveValues, Collections.reverseOrder());
+                Collections.sort(minNegativeValues);
+
+                if (maxPositiveValues.size() >= 3) {
+                    List<Integer> tmpList = maxPositiveValues.subList(0, 3);
+                    maxPositiveValues = tmpList;
+                }
+                if (minPositiveValues.size() >= 3) {
+                    List<Integer> tmpList = minPositiveValues.subList(0, 3);
+                    minPositiveValues = tmpList;
+                }
+            } else if (currInt < 0) {
+                maxNegativeValues.add(currInt);
+                minNegativeValues.add(currInt);
+                Collections.sort(maxNegativeValues);
+                Collections.sort(minNegativeValues, Collections.reverseOrder());
+
+                if (maxNegativeValues.size() >= 3) {
+                    List<Integer> tmpList = maxNegativeValues.subList(0, 3);
+                    maxNegativeValues = tmpList;
+
+                }
+                if (minNegativeValues.size() >= 3) {
+                    List<Integer> tmpList = minNegativeValues.subList(0, 3);
+                    minNegativeValues = tmpList;
+                }
+            }
+        }
+
+        // two possibilities to have max positive value
+        // 1) max pos * second max pos * third max pos
+        if (maxPositiveValues.size() == 3) {
+            highestProduct = maxPositiveValues.get(0) *
+                    maxPositiveValues.get(1) * maxPositiveValues.get(2);
+        }
+        // 2) max pos * max neg * second max neg
+        if (maxPositiveValues.size() >= 1 && maxNegativeValues.size() >= 2) {
+            int tmpHighestProduct = maxPositiveValues.get(0) *
+                    maxNegativeValues.get(0) * maxNegativeValues.get(1);
+            if (tmpHighestProduct > highestProduct) {
+                highestProduct = tmpHighestProduct;
+            }
+         }
+
+        // two possibilities to have min negative value
+        // 1) min neg * second min neg * third min neg
+        if (maxPositiveValues.size() == 0 && minNegativeValues.size() == 3) {
+            highestProduct = minNegativeValues.get(0) *
+                    minNegativeValues.get(1) * minNegativeValues.get(2);
+        }
+
+        // 2) min neg * min pos * second min pos
+        if (minNegativeValues.size() >= 1 && minPositiveValues.size() >= 2) {
+            int tmpHighestProduct = minNegativeValues.get(0) *
+                    minPositiveValues.get(0) * minPositiveValues.get(1);
+            if (tmpHighestProduct > highestProduct) {
+                highestProduct =  tmpHighestProduct;
+            }
+        }
+
+        // check with 0 value
+        if (zeroExist && highestProduct < 0) {
+            return 0;
+        }
+        return highestProduct;
+    }
 }
