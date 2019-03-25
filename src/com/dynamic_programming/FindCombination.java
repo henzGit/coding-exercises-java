@@ -2,14 +2,14 @@ package com.dynamic_programming;
 
 import java.util.*;
 
-public class FindAnagramsInDict {
+public class FindCombination {
 
     /**
      * Find all anagrams in a dictionary
      * @param wordList list of words in a dictionary
      * @return list of anagrams
      */
-    public static List<String> find(List<String> wordList) {
+    public static List<String> findAnagramInDict(List<String> wordList) {
         Map<Integer, Set<String>> dict = new TreeMap<>();
         Set<String> anagrams = new TreeSet<>();
 
