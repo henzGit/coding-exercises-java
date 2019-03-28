@@ -1,5 +1,6 @@
 package com;
 
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -12,6 +13,7 @@ import com.dynamic_programming.FindPath.Point;
 import com.dynamic_programming.FindPath;
 import com.dynamic_programming.FindMaxValue.*;
 import com.dynamic_programming.StringConstruct;
+import com.graph.NetworkGraph;
 
 public class Main {
 
@@ -125,10 +127,18 @@ public class Main {
         System.out.println("anagrams: " + anagrams);
     }
 
+    public static void testGraph() {
+        String fileName = "task2-test-input.txt";
+        String inputPath = Paths.get(".", "src", "com", "graph", fileName)
+                            .toString();
+        NetworkGraph.findSubclustersSize(inputPath, "output.txt");
+    }
+
     public static void testOther() {
     }
 
     public static void main(String[] args) {
+        testGraph();
 
     }
 
