@@ -129,7 +129,7 @@ public class Main {
 
     public static void testGraph() {
         String fileName = "task2-test-input.txt";
-        String inputPath = Paths.get(".", "src", "com", "graph", fileName)
+        String inputPath = Paths.get(".", "src", "com", "graph_traversal", fileName)
                             .toString();
         NetworkGraph.findSubclustersSize(inputPath, "output.txt");
     }
@@ -138,8 +138,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testGraph();
-
     }
 
 }
