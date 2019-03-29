@@ -158,17 +158,19 @@ public class NetworkGraph {
             // Do BFS using queue
             while(queue.size() > 0) {
                 int currNode = queue.remove(0);
-                clusteredNodes.add(currNode); // add current node to the clustered nodes
+                if (!clusteredNodes.contains(currNode)) {
+                    clusteredNodes.add(currNode); // add current node to the clustered nodes
 
-                // get the list of connected nodes with the current node
-                Set<Integer> connectedNodes = inputGraph.get(currNode);
-                // mark current node as already visited key
-                visitedKeys.add(currNode);
-                for (int connectedNode : connectedNodes) {
-                    if (!clusteredNodes.contains(connectedNode)) {
+                    // get the list of connected nodes with the current node
+                    Set<Integer> connectedNodes = inputGraph.get(currNode);
+                    // mark current node as already visited key
+                    visitedKeys.add(currNode);
+                    for (int connectedNode : connectedNodes) {
                         queue.add(connectedNode);
                     }
+
                 }
+
             }
             nodesClusters.add(clusteredNodes);
         }
