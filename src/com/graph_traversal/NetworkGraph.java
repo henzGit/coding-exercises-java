@@ -1,4 +1,4 @@
-package com.graph;
+package com.graph_traversal;
 
 import java.util.*;
 import java.nio.file.Files;
