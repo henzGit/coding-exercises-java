@@ -58,13 +58,13 @@ public class FindShortestPath {
     }
 
     /**
-     * Find shortest path using Dijkstra Algorithm
+     * Find shortest path using dijkstra Algorithm
      * @param adjMatrix weight of edges between nodes
      * @param src beginning point
      * @param dest destination point
-     * @return shortest path calculated using Dijkstra algorithm
+     * @return shortest path calculated using dijkstra algorithm
      */
-    public static Path Dijkstra(int[][] adjMatrix, int src, int dest) {
+    public static Path dijkstra(int[][] adjMatrix, int src, int dest) {
         Path shortestPath = new Path();
 
         int nodeNum = adjMatrix[0].length;
@@ -124,5 +124,110 @@ public class FindShortestPath {
         shortestPath.setPath(paths[dest]);
 
         return shortestPath;
+    }
+
+    /**
+     * Public cla
+     */
+    public static class Point {
+        private int row;
+        private int col;
+        private int distance;
+
+        public Point(int row, int col) {
+            this.row = row;
+            this.col = col;
+            this.distance = 0;
+        }
+
+        public Point(int row, int col, int distance) {
+            this.row = row;
+            this.col = col;
+            this.distance = distance;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("(row: %1d, column: %1d)", row, col);
+        }
+
+        public int getRow() {
+            return row;
+        }
+
+        public int getCol() {
+            return col;
+        }
+
+        public int getDistance() {
+            return distance;
+        }
+    }
+
+    /**
+     * Check if row and column is within maze boundary
+     * @param row row to be checked
+     * @param col column to be checked
+     * @param maxRow maximum row
+     * @param maxCol maximum colum
+     * @return true if valid, otherwise false
+     */
+    private static boolean isValidRowCol(int row, int col, int maxRow, int maxCol) {
+        if (
+                row > -1 && col > -1 && row <= maxRow && col <= maxCol
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Find minimum distance from source to destination in a maze using BFS
+     * @param maze 2D maze containing 0 and 1. 0 indicates the node is blocked
+     *             while 1 indicates that the nodes can be passed through
+     * @param src start point
+     * @param dest end point
+     * @return minimum distance from start point to end point
+     */
+    public static int bfs(int[][] maze, Point src, Point dest) {
+        int mazeLen = maze.length;
+        int mazeWidth = maze[0].length;
+
+        boolean[][] visitedPoints = new boolean[mazeLen][mazeWidth];
+
+        List<Point> queue = new ArrayList<>();
+        queue.add(src);
+
+        int[] rowNum = { 0, 1, -1,  0};
+        int[] colNum = { 1, 0,  0, -1};
+
+        while (!queue.isEmpty()) {
+            Point currPoint = queue.remove(0);
+            int currDistance = currPoint.getDistance();
+
+            if (
+                    currPoint.getRow() == dest.getRow()
+                    && currPoint.getRow() == dest.getRow()
+                ) {
+                return currDistance;
+            }
+
+            // list 4 candidate points from current point
+            for (int i = 0 ; i < 4; i++) {
+                int nextRow = currPoint.getRow() + rowNum[i];
+                int nextCol = currPoint.getCol() + colNum[i];
+                if (
+                        isValidRowCol(nextRow, nextCol, mazeLen-1, mazeWidth-1)
+                        && !visitedPoints[nextRow][nextCol]
+                        && maze[nextRow][nextCol] == 1
+                ) {
+                    visitedPoints[nextRow][nextCol] = true;
+                    queue.add(new Point(nextRow, nextCol, currDistance+1));
+                }
+            }
+        }
+
+        return -1;
     }
 }
