@@ -12,7 +12,7 @@ public class SearchAlgorithm {
      * Big O Complexity is n*log(n)
      * @param inputArray array where the number can be found
      * @param searchedNumber number to be searched
-     * @return -1 if not found, otherwise return 0
+     * @return -1 if not found, otherwise return index
      */
     public static int binarySearch(List<Integer> inputArray, int searchedNumber){
         // for inputArray containing only one element
@@ -50,6 +50,5 @@ public class SearchAlgorithm {
         }
         return -1;
     }
-
 }
 
