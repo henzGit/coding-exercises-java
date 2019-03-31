@@ -182,4 +182,29 @@ public class StringConstruct {
         }
         return returnList;
     }
+
+    /**
+     * Check if input can be constructed using words in dictionary
+     * @param input input to be constructed
+     * @param dict dictionary of words
+     * @return true if input string can be constructed from words in dictionary
+     *          , otherwise false
+     */
+    public static boolean isConstructableByDict(String input, List<String> dict) {
+        int size = input.length();
+        // base case
+        if ( size == 0) return true;
+        for (int i = 0; i < size; i++) {
+            if (
+                    dict.contains(input.substring(0, i)) &&
+                            isStringConstructableFromSubstrings(input.substring(i, size), dict)
+
+            ) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
 }
