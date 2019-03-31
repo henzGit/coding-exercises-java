@@ -109,7 +109,6 @@ public class FindShortestPath {
                 if (
                         !sptSet[v]
                         && adjMatrix[u][v] != 0
-                        && dist[u] != Integer.MAX_VALUE
                         && dist[u] + adjMatrix[u][v] < dist[v]
                 ) {
                     dist[v] = dist[u] + adjMatrix[u][v];
