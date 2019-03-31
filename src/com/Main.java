@@ -9,13 +9,14 @@ import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
 import com.dynamic_programming.FindCombination;
 import com.dynamic_programming.FindMaxValue;
-import com.dynamic_programming.FindPath.Point;
 import com.dynamic_programming.FindPath;
 import com.dynamic_programming.FindMaxValue.*;
 import com.dynamic_programming.StringConstruct;
 import com.graph_traversal.NetworkGraph;
 import com.graph_traversal.FindShortestPath;
-import com.graph_traversal.FindShortestPath.Path;
+import com.graph_traversal.FindShortestPath.*;
+import com.tree_traversal.BinaryTree;
+import com.tree_traversal.BinaryTree.Node;
 
 public class Main {
 
@@ -76,7 +77,7 @@ public class Main {
         };
 
         // test find path in maze problem
-        List<Point> path = FindPath.getPathFromBooleanMaze(maze);
+        List<FindPath.Point> path = FindPath.getPathFromBooleanMaze(maze);
         System.out.println("path: " + path.toString());
     }
 
@@ -143,7 +144,7 @@ public class Main {
                 NetworkGraph.findSubclustersSize(inputPath, "output.txt");
                 break;
             case 1:
-                // find shortest path using Dijkstra
+                // find shortest path using dijkstra
                 /**
                  * 2d array which holds the weight of the edges
                  */
@@ -166,9 +167,27 @@ public class Main {
                 int src = 8;
                 int dest = 4;
 
-                Path shortestPath = FindShortestPath.Dijkstra(adjacencyMatrix, src, dest);
+                Path shortestPath = FindShortestPath.dijkstra(adjacencyMatrix, src, dest);
                 System.out.println("shortestPath: " + shortestPath.getPath());
                 System.out.println("shortestPath distance: " + shortestPath.getDistance());
+            case 2:
+                // find minimum distance in a 2D maze from start point to end point
+                // using BFS
+                int[][] mat  = {
+                        {1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+                        {1, 0, 1, 0, 1, 1, 1, 0, 1, 1 },
+                        {1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
+                        {0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
+                        {1, 1, 1, 0, 1, 1, 1, 0, 1, 0 },
+                        {1, 0, 1, 1, 1, 1, 0, 1, 0, 0 },
+                        {1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                        {1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+                        {1, 1, 0, 0, 0, 0, 1, 0, 0, 1 }
+                };
+                Point srcPoint = new Point(0,0);
+                Point destPoint = new Point(8, 9);
+                int minDistance = FindShortestPath.bfs(mat, srcPoint, destPoint);
+                System.out.println("minDistance: " + minDistance);
         }
 
     }
@@ -176,8 +195,33 @@ public class Main {
     public static void testOther() {
     }
 
+    /**
+     * Selection of the test case
+     * @param selection number of test case
+     */
+    public static void testTree(int selection) {
+        switch (selection) {
+            case 0:
+                BinaryTree tree = new BinaryTree();
+                tree.setRoot(new Node(1));
+                tree.getRoot().setLeft(new Node(2));
+                tree.getRoot().setRight(new Node(3));
+                tree.getRoot().getLeft().setLeft(new Node(4));
+                tree.getRoot().getLeft().setRight(new Node(5));
+
+                System.out.println("Preorder traversal of binary tree is ");
+                tree.printPreorder();
+
+                System.out.println("\nInorder traversal of binary tree is ");
+                tree.printInorder();
+
+                System.out.println("\nPostorder traversal of binary tree is ");
+                tree.printPostorder();
+        }
+    }
+
     public static void main(String[] args) {
-        testGraph(1);
+        testTree(0);
     }
 
 }
