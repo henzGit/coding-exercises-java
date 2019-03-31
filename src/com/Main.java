@@ -13,7 +13,9 @@ import com.dynamic_programming.FindPath.Point;
 import com.dynamic_programming.FindPath;
 import com.dynamic_programming.FindMaxValue.*;
 import com.dynamic_programming.StringConstruct;
-import com.graph.NetworkGraph;
+import com.graph_traversal.NetworkGraph;
+import com.graph_traversal.FindShortestPath;
+import com.graph_traversal.FindShortestPath.Path;
 
 public class Main {
 
@@ -127,17 +129,55 @@ public class Main {
         System.out.println("anagrams: " + anagrams);
     }
 
-    public static void testGraph() {
-        String fileName = "task2-test-input.txt";
-        String inputPath = Paths.get(".", "src", "com", "graph_traversal", fileName)
-                            .toString();
-        NetworkGraph.findSubclustersSize(inputPath, "output.txt");
+    /**
+     * Selection of the test case
+     * @param selection number of test case
+     */
+    public static void testGraph(int selection) {
+        switch(selection) {
+            case 0:
+                // find network cluster sizes
+                String fileName = "task2-test-input.txt";
+                String inputPath = Paths.get(".", "src", "com", "graph_traversal", fileName)
+                        .toString();
+                NetworkGraph.findSubclustersSize(inputPath, "output.txt");
+                break;
+            case 1:
+                // find shortest path using Dijkstra
+                /**
+                 * 2d array which holds the weight of the edges
+                 */
+                /* Let us create the example graph discussed above */
+                int adjacencyMatrix[][] = new int[][]{
+                        {0, 4,  0, 0,  0,  0,  0, 8,  0},
+                        {4, 0,  8, 0,  0,  0,  0, 11, 0},
+                        {0, 8,  0, 7,  0,  4,  0, 0,  2},
+                        {0, 0,  7, 0,  9,  14, 0, 0,  0},
+                        {0, 0,  0, 9,  0,  10, 0, 0,  0},
+                        {0, 0,  4, 14, 10, 0,  2, 0,  0},
+                        {0, 0,  0, 0,  0,  2,  0, 1,  6},
+                        {8, 11, 0, 0,  0,  0,  1, 0,  7},
+                        {0, 0,  2, 0,  0,  0,  6, 7,  0}
+                };
+
+                /**
+                 * source and destination vertices
+                 */
+                int src = 8;
+                int dest = 4;
+
+                Path shortestPath = FindShortestPath.Dijkstra(adjacencyMatrix, src, dest);
+                System.out.println("shortestPath: " + shortestPath.getPath());
+                System.out.println("shortestPath distance: " + shortestPath.getDistance());
+        }
+
     }
 
     public static void testOther() {
     }
 
     public static void main(String[] args) {
+        testGraph(1);
     }
 
 }
