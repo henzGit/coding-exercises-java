@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.time.LocalDateTime;
-import java.util.stream.IntStream;
 
 /**
  * Public class used to find max profit given values of a stock option in time
