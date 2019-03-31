@@ -7,11 +7,8 @@ import java.util.*;
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
-import com.dynamic_programming.FindCombination;
-import com.dynamic_programming.FindMaxValue;
-import com.dynamic_programming.FindPath;
+import com.dynamic_programming.*;
 import com.dynamic_programming.FindMaxValue.*;
-import com.dynamic_programming.StringConstruct;
 import com.graph_traversal.NetworkGraph;
 import com.graph_traversal.FindShortestPath;
 import com.graph_traversal.FindShortestPath.*;
@@ -110,16 +107,28 @@ public class Main {
         System.out.println("maxProducts: " + maxProducts);
     }
 
-    public static void testStringConstruct() {
+    /**
+     * Selection of the test case for String construct related
+     * @param selection number of test case
+     */
+    public static void testStringConstruct(int selection) {
         String[] substrings = {
-                "B", "T", "A", "C", "MA", "N", "M", "XXXX", "ATMA"
+                "B", "T", "A", "C", "MA", "N", "M", "I", "ATMA", "D"
         };
-        String stringToBeConstructed = "BATMANXXCX";
-        boolean canStringBeConstructed =
-                StringConstruct.isStringConstructableFromSubstrings(
-                    stringToBeConstructed, Arrays.asList(substrings)
-        );
-        System.out.println("canStringBeConstructed: " + canStringBeConstructed);
+        String stringToBeConstructed = "AMANDAMAITENTRAM";
+        switch (selection) {
+            case 0:
+                boolean canStringBeConstructed =
+                    StringConstruct.isStringConstructableFromSubstrings(
+                        stringToBeConstructed, Arrays.asList(substrings)
+                    );
+                System.out.println("canStringBeConstructed: " + canStringBeConstructed);
+            case 1:
+                boolean isConstructable = StringConstructDp.isConstructableByDictWrapper(
+                        stringToBeConstructed, new ArrayList<>(Arrays.asList(substrings)));
+                System.out.println("isConstructable: " + isConstructable);
+        }
+
     }
 
     public static void testFindCombination() {
@@ -131,7 +140,7 @@ public class Main {
     }
 
     /**
-     * Selection of the test case
+     * Selection of the test case for Graph related
      * @param selection number of test case
      */
     public static void testGraph(int selection) {
@@ -196,7 +205,7 @@ public class Main {
     }
 
     /**
-     * Selection of the test case
+     * Selection of the test case for Tree related
      * @param selection number of test case
      */
     public static void testTree(int selection) {
@@ -221,7 +230,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testTree(0);
+        testStringConstruct(1);
     }
 
 }
