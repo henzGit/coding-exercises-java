@@ -169,7 +169,7 @@ public class SortAlgorithm {
                 quickSort(leftPartition);
             }
 
-            if (indexPartition+1 < inputArray.size()-1) {
+            if (indexPartition+1 < inputArray.size()) {
                 List<Integer> rightPartition = inputArray.subList(
                         indexPartition+1, inputArray.size()
                 );
