@@ -205,4 +205,80 @@ public class FindMaxValue {
         }
         return highestProduct;
     }
+
+    /**
+     * Utility method to find if we can make the first type of bouquet using
+     * provided 3 flowers
+     * @param str string containing 3 characters which represent flowers
+     *            For example: "010", "000"
+     * @return true if flowers can be turned into first bouquet
+     */
+    public static boolean canBeTurnedToFirstBouquet(String str) {
+        if (str.equals("000")) return true;
+        return false;
+    }
+
+    /**
+     * Utility method to find if we can make the second type of bouquet using
+     * provided 2 flowers
+     * @param str string containing 2 characters which represent flowers
+     *            For example: "01", "00"
+     * @return true if flowers can be turned into second bouquet
+     */
+    public static boolean canBeTurnedToSecondBouquet(String str) {
+        if (str.equals("01") || str.equals("10") ) return true;
+        return false;
+    }
+
+    /**
+     * Find max profit by selling two types of flower bouquets
+     * First bouquet contains three roses and costs p dollars
+     * Second bouquet contains one rose and one cosmos and costs q dollars
+     * Lara grows these flowers in her garden in a single row
+     * Consider the row as one dimensional array where each cell contains
+     * a rose or a cosmos.
+     * For example: 001101011, is a row with 9 roses, 0 indicates rose
+     * and 1 indicates cosmos
+     * To make bouquet, we need to make with only consecutive flowers from the array
+     * In a bouquet, the flower from consecutive indices (i, i+1, i+2) in the array
+     * can be present, but not from non-consecutive indices (i, and i+2)
+     * @param p profit by selling first bouquet
+     * @param q profit by selling second bouquet
+     * @param flowers string representing possible flower arrangemenet
+     *                 For example: 101 contains 2 cosmos and 1 rose
+     * @return optimal profit by selling two types of bouquets
+     */
+    public static int findMaxProfitSellingBouquets(int p, int q, String flowers) {
+        // Write your code here
+        int size = flowers.length();
+
+        if (size < 2) {
+            return 0;
+        }
+        if (size == 2) {
+            if (canBeTurnedToSecondBouquet(flowers)) return q;
+            return 0;
+        }
+
+        int profit1;
+        if (size == 3) {
+            profit1 = (canBeTurnedToFirstBouquet(flowers.substring(0, 3))? p: 0)
+                    + findMaxProfitSellingBouquets(p, q, flowers.substring(3));
+        } else  {
+            profit1 = Math.max(
+                    (canBeTurnedToFirstBouquet(flowers.substring(0, 3))? p: 0)
+                            + findMaxProfitSellingBouquets(p, q, flowers.substring(3)),
+                    (canBeTurnedToFirstBouquet(flowers.substring(1, 4))? p: 0)
+                            + findMaxProfitSellingBouquets(p, q, flowers.substring(4))
+            );
+        }
+
+        int profit2 = Math.max(
+                (canBeTurnedToSecondBouquet(flowers.substring(0, 2))? q: 0)
+                        + findMaxProfitSellingBouquets(p, q, flowers.substring(2)),
+                (canBeTurnedToSecondBouquet(flowers.substring(1, 3))? q: 0)
+                        + findMaxProfitSellingBouquets(p, q, flowers.substring(3))
+        );
+        return Math.max(profit1, profit2);
+    }
 }
