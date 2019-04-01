@@ -7,6 +7,7 @@ import java.util.*;
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
+import com.data_structure.CustomLinkedList;
 import com.dynamic_programming.*;
 import com.dynamic_programming.FindMaxValue.*;
 import com.graph_traversal.NetworkGraph;
@@ -17,31 +18,38 @@ import com.tree_traversal.BinaryTree.Node;
 
 public class Main {
 
-    public static void testSortAlgorithms() {
+    /**
+     * Selection of the test case for sort algorithm related
+     * @param selection number of test case
+     */
+    public static void testSortAlgorithms(int selection) {
         // generate random numbers
         int n = 10;
         List<Integer> inputSort = Utils.generateRandomIntegers(n, n);
         System.out.println("inputSort: " + inputSort);
 
-        // test Bubble Sort algorithm
-        SortAlgorithm.bubbleSort(inputSort);
-        System.out.println("inputSort: " + inputSort);
-
-        // test Selection Sort algorithm
-        SortAlgorithm.selectionSort(inputSort);
-        System.out.println("inputSort: " + inputSort);
-
-        // test Insertion Sort algorithm
-        SortAlgorithm.insertionSort(inputSort);
-        System.out.println("inputSort: " + inputSort);
-
-        // test Merge Sort algorithm
-        List<Integer> outputSort = SortAlgorithm.mergeSort(inputSort);
-        System.out.println("outputSort: " + outputSort);
-
-        // test Quick Sort algorithm
-        SortAlgorithm.quickSort(inputSort);
-        System.out.println("inputSort: " + inputSort);
+        switch (selection) {
+            case 0:
+                // test Bubble Sort algorithm
+                SortAlgorithm.bubbleSort(inputSort);
+                System.out.println("inputSort: " + inputSort);
+            case 1:
+                // test Selection Sort algorithm
+                SortAlgorithm.selectionSort(inputSort);
+                System.out.println("inputSort: " + inputSort);
+            case 2:
+                // test Insertion Sort algorithm
+                SortAlgorithm.insertionSort(inputSort);
+                System.out.println("inputSort: " + inputSort);
+            case 3:
+                // test Merge Sort algorithm
+                List<Integer> outputSort = SortAlgorithm.mergeSort(inputSort);
+                System.out.println("outputSort: " + outputSort);
+            case 4:
+                // test Quick Sort algorithm
+                SortAlgorithm.quickSort(inputSort);
+                System.out.println("inputSort: " + inputSort);
+        }
     }
 
     public static void testSearchAlgorithms() {
@@ -57,11 +65,25 @@ public class Main {
 
     }
 
-    public static void testDataStructures() {
-        CustomHashMap customHashMap = new CustomHashMap();
-        customHashMap.put("test", 1);
-        System.out.println("test get customHashMap: " + customHashMap.get("test"));
-        System.out.println("test get customHashMap: " + customHashMap.get("test2"));
+    /**
+     * Selection of the test case for data structure related
+     * @param selection number of test case
+     */
+    public static void testDataStructures(int selection) {
+        switch (selection) {
+            case 0:
+                CustomHashMap customHashMap = new CustomHashMap();
+                customHashMap.put("test", 1);
+                System.out.println("test get customHashMap: " + customHashMap.get("test"));
+                System.out.println("test get customHashMap: " + customHashMap.get("test2"));
+            case 1:
+                LinkedList<Integer> list = new LinkedList<>();
+                list.addAll(Arrays.asList(new Integer[]{1,2,3,4,5}));
+                System.out.println("list: " + list);
+                List<Integer> reversedList = (List<Integer>) CustomLinkedList.reverseList(list);
+                System.out.println("reversedList: " + reversedList);
+
+        }
     }
 
     public static void testFindPath() {
@@ -78,33 +100,55 @@ public class Main {
         System.out.println("path: " + path.toString());
     }
 
-    public static void testFindMaxValue() {
-        ///////////////////// Test find max profit stock option //////////////////////
-        // test find max profit stock option
-        int numberPoints = 10;
-        // generate random floats
-        List<Float> floats = Utils.generateRandomFloats(numberPoints, 100);
+    /**
+     * Selection of the test case for finding max value related
+     * @param selection number of test case
+     */
+    public static void testFindMaxValue(int selection) {
+        switch (selection) {
+            case 0:
+                ///////////////////// Test find max profit stock option //////////////////////
+                // test find max profit stock option
+                int numberPoints = 10;
+                // generate random floats
+                List<Float> floats = Utils.generateRandomFloats(numberPoints, 100);
 
-        // generate list of DateTimes
-        List<LocalDateTime> times = Utils.generateDateTimes(numberPoints);
+                // generate list of DateTimes
+                List<LocalDateTime> times = Utils.generateDateTimes(numberPoints);
 
-        // generate list of stock option prices
-        List<StockOption> stockOptions = new LinkedList<>();
-        for (int i = 0; i < numberPoints; i++) {
-            StockOption stockOption = new StockOption(floats.get(i), times.get(i));
-            stockOptions.add(stockOption);
+                // generate list of stock option prices
+                List<StockOption> stockOptions = new LinkedList<>();
+                for (int i = 0; i < numberPoints; i++) {
+                    StockOption stockOption = new StockOption(floats.get(i), times.get(i));
+                    stockOptions.add(stockOption);
+                }
+                float maxProfit = FindMaxValue.maxProfitStockOptions(stockOptions);
+            case 1:
+                ///////////////////// Test find max profit with two transactions //////////////////////
+                int prices[] = {2, 30, 15, 10, 8, 25, 80};
+                float profit = FindMaxValue.maxProfitWithMaxTwoTransactions(prices);
+                System.out.println("Maximum Profit = "+ profit);
+            case 2:
+                ///////////////////// Test find max product of three integers //////////////////////
+                int[] inputInts = new int[] {-100, 100, 200, 9, 2};
+                int maxProducts = FindMaxValue.findMaxProductsThreeInts(inputInts);
+                System.out.println("maxProducts: " + maxProducts);
+            case 3:
+                int sellProfit;
+                // Find max profit by selling flower bouquets
+                sellProfit = FindMaxValue.findMaxProfitSellingBouquets(2, 3, "0001000");
+                System.out.println("profit: " + sellProfit);
+                sellProfit = FindMaxValue.findMaxProfitSellingBouquets(2, 3, "01");
+                System.out.println("profit: " + sellProfit);
+
+                sellProfit = FindMaxValue.findMaxProfitSellingBouquets(10, 7, "0");
+                System.out.println("profit: " + sellProfit);
+
+                sellProfit = FindMaxValue.findMaxProfitSellingBouquets(10, 7, "0011001100");
+                System.out.println("profit: " + sellProfit);
         }
-        float maxProfit = FindMaxValue.maxProfitStockOptions(stockOptions);
 
-        ///////////////////// Test find max profit with two transactions //////////////////////
-        int prices[] = {2, 30, 15, 10, 8, 25, 80};
-        float profit = FindMaxValue.maxProfitWithMaxTwoTransactions(prices);
-        System.out.println("Maximum Profit = "+ profit);
 
-        ///////////////////// Test find max product of three integers //////////////////////
-        int[] inputInts = new int[] {-100, 100, 200, 9, 2};
-        int maxProducts = FindMaxValue.findMaxProductsThreeInts(inputInts);
-        System.out.println("maxProducts: " + maxProducts);
     }
 
     /**
@@ -115,7 +159,7 @@ public class Main {
         String[] substrings = {
                 "B", "T", "A", "C", "MA", "N", "M", "I", "ATMA", "D"
         };
-        String stringToBeConstructed = "AMANDAMAITENTRAM";
+        String stringToBeConstructed = "BATMANC";
         switch (selection) {
             case 0:
                 boolean canStringBeConstructed =
@@ -124,9 +168,13 @@ public class Main {
                     );
                 System.out.println("canStringBeConstructed: " + canStringBeConstructed);
             case 1:
-                boolean isConstructable = StringConstructDp.isConstructableByDictWrapper(
+                boolean isConstructableRecursive = StringConstructDp.isConstructableByDictRecursive(
                         stringToBeConstructed, new ArrayList<>(Arrays.asList(substrings)));
-                System.out.println("isConstructable: " + isConstructable);
+                System.out.println("isConstructable: " + isConstructableRecursive);
+            case 2:
+                boolean isConstructableIterative = StringConstructDp.isConstructableByDictIterative(
+                        stringToBeConstructed, new ArrayList<>(Arrays.asList(substrings)));
+                System.out.println("isConstructable: " + isConstructableIterative);
         }
 
     }
@@ -229,8 +277,11 @@ public class Main {
         }
     }
 
+
+
+
     public static void main(String[] args) {
-        testStringConstruct(1);
+        testFindMaxValue(3);
     }
 
 }
