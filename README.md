@@ -4,4 +4,5 @@ Coding exercises using Java. The composition is as follows:
 2. Data structure
 3. Dynamic programming
 4. Graph traversal
-5. Tree traversal
+5. Math related
+6. Tree traversal
