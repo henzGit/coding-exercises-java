@@ -20,4 +20,24 @@ public class MathRelated {
         return true;
     }
 
+    /**
+     * Function to print Fibonacci series
+     * @param n input of fibonacci series
+     */
+    public static void printFibonacciSeries(int n) {
+
+        long n1 = 1, n2 = 1, n3;
+        for (int i = 0; i <= n; i++) {
+            if (i == 0 || i == 1) {
+                System.out.println("f(" + i + "): " + 1);
+                continue;
+            }
+
+            n3 = n1 + n2;
+            System.out.println("f(" + i + "): " + n3);
+            n1 = n2;
+            n2 = n3;
+        }
+    }
+
 }
