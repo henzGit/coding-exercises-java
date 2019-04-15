@@ -3,7 +3,6 @@ package com;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
-
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
@@ -13,14 +12,15 @@ import com.dynamic_programming.FindMaxValue.*;
 import com.graph_traversal.NetworkGraph;
 import com.graph_traversal.FindShortestPath;
 import com.graph_traversal.FindShortestPath.*;
+import com.math_related.MathRelated;
 import com.tree_traversal.BinaryTree;
 import com.tree_traversal.BinaryTree.Node;
 
 public class Main {
 
     /**
-     * Selection of the test case for sort algorithm related
-     * @param selection number of test case
+     * Selection of test case for sort algorithm related
+     * @param selection number of selected test case
      */
     public static void testSortAlgorithms(int selection) {
         // generate random numbers
@@ -66,8 +66,8 @@ public class Main {
     }
 
     /**
-     * Selection of the test case for data structure related
-     * @param selection number of test case
+     * Selection of test case for data structure related
+     * @param selection number of selected test case
      */
     public static void testDataStructures(int selection) {
         switch (selection) {
@@ -101,8 +101,8 @@ public class Main {
     }
 
     /**
-     * Selection of the test case for finding max value related
-     * @param selection number of test case
+     * Selection of test case for finding max value related
+     * @param selection number of selected test case
      */
     public static void testFindMaxValue(int selection) {
         switch (selection) {
@@ -152,8 +152,8 @@ public class Main {
     }
 
     /**
-     * Selection of the test case for String construct related
-     * @param selection number of test case
+     * Selection of test case for String construct related
+     * @param selection number of selected test case
      */
     public static void testStringConstruct(int selection) {
         String[] substrings = {
@@ -188,8 +188,8 @@ public class Main {
     }
 
     /**
-     * Selection of the test case for Graph related
-     * @param selection number of test case
+     * Selection of test case for Graph related
+     * @param selection number of selected test case
      */
     public static void testGraph(int selection) {
         switch(selection) {
@@ -253,8 +253,8 @@ public class Main {
     }
 
     /**
-     * Selection of the test case for Tree related
-     * @param selection number of test case
+     * Selection of test case for Tree related
+     * @param selection number of selected test case
      */
     public static void testTree(int selection) {
         switch (selection) {
@@ -277,11 +277,28 @@ public class Main {
         }
     }
 
-
-
-
+    /**
+     * Selection of test case for Math related
+     * @param selection number of selected test case
+     */
+    public static void testMathRelated(int selection) {
+        switch (selection) {
+            case 0:
+                // check if prime number
+                for (int i = 1; i <= 1000; i++) {
+                    if (MathRelated.isPrimeNumber(i))
+                        System.out.println("Prime number: " + i);
+                }
+                break;
+            case 1:
+                // print Fibonacci series
+                MathRelated.printFibonacciSeries(100);
+                break;
+        }
+    }
+    
     public static void main(String[] args) {
-        testFindMaxValue(3);
+        testMathRelated(1);
     }
 
 }
