@@ -3,10 +3,11 @@ package com;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
+
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
-import com.data_structure.CustomLinkedList;
+import com.data_structure.SinglyLinkedList;
 import com.dynamic_programming.*;
 import com.dynamic_programming.FindMaxValue.*;
 import com.graph_traversal.NetworkGraph;
@@ -77,12 +78,14 @@ public class Main {
                 System.out.println("test get customHashMap: " + customHashMap.get("test"));
                 System.out.println("test get customHashMap: " + customHashMap.get("test2"));
             case 1:
-                LinkedList<Integer> list = new LinkedList<>();
-                list.addAll(Arrays.asList(new Integer[]{1,2,3,4,5}));
-                System.out.println("list: " + list);
-                List<Integer> reversedList = (List<Integer>) CustomLinkedList.reverseList(list);
-                System.out.println("reversedList: " + reversedList);
-
+                SinglyLinkedList list = new SinglyLinkedList();
+                list.add(1);
+                list.add(2);
+                list.add(3);
+                list.add(4);
+                list.printList();
+                list.reverseList();
+                list.printList();
         }
     }
 
@@ -298,7 +301,7 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        testMathRelated(1);
+        testDataStructures(1);
     }
 
 }
