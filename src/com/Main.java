@@ -16,6 +16,7 @@ import com.graph_traversal.FindShortestPath;
 import com.graph_traversal.FindShortestPath.*;
 import com.math_related.MathRelated;
 import com.data_structure.BinaryTree;
+import com.tree_traversal.TreeTraversal;
 
 public class Main {
 
@@ -281,7 +282,11 @@ public class Main {
                 tree.getRoot().setLeft(2);
                 tree.getRoot().setRight(3);
                 tree.getRoot().getLeft().setLeft(4);
-                tree.getRoot().getLeft().setRight(5);
+                tree.getRoot().getLeft().setRight(1);
+                tree.getRoot().getLeft().getLeft().setLeft(8);
+                tree.getRoot().getLeft().getLeft().setRight(7);
+                tree.getRoot().getLeft().getRight().setLeft(10);
+                tree.getRoot().getLeft().getRight().setRight(12);
 
                 System.out.println("Preorder traversal of binary tree is ");
                 tree.printPreorder();
@@ -291,6 +296,10 @@ public class Main {
 
                 System.out.println("\nPostorder traversal of binary tree is ");
                 tree.printPostorder();
+
+                Integer maxElement = (Integer) TreeTraversal
+                            .getMaxElementInLevel(tree.getRoot(), 3);
+                System.out.println("maxElement: " + maxElement);
         }
     }
 
