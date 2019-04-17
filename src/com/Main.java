@@ -7,6 +7,7 @@ import java.util.*;
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
 import com.data_structure.CustomHashMap;
+import com.data_structure.LRUCache;
 import com.data_structure.SinglyLinkedList;
 import com.dynamic_programming.*;
 import com.dynamic_programming.FindMaxValue.*;
@@ -86,6 +87,20 @@ public class Main {
                 list.printList();
                 list.reverseList();
                 list.printList();
+            case 2:
+                LRUCache cache = new LRUCache(4);
+                for (int i = 1; i <= 10; i++) {
+                    cache.put(i, i);
+                }
+                cache.printContent();
+                cache.get(7);
+                cache.printContent();
+                cache.put(10,2);
+                cache.printContent();
+                cache.remove(7);
+                cache.printContent();
+                cache.evict();
+                cache.printContent();
         }
     }
 
@@ -301,7 +316,7 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        testDataStructures(1);
+        testDataStructures(2);
     }
 
 }
