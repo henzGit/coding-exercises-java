@@ -15,8 +15,7 @@ import com.graph_traversal.NetworkGraph;
 import com.graph_traversal.FindShortestPath;
 import com.graph_traversal.FindShortestPath.*;
 import com.math_related.MathRelated;
-import com.tree_traversal.BinaryTree;
-import com.tree_traversal.BinaryTree.Node;
+import com.data_structure.BinaryTree;
 
 public class Main {
 
@@ -277,12 +276,12 @@ public class Main {
     public static void testTree(int selection) {
         switch (selection) {
             case 0:
-                BinaryTree tree = new BinaryTree();
-                tree.setRoot(new Node(1));
-                tree.getRoot().setLeft(new Node(2));
-                tree.getRoot().setRight(new Node(3));
-                tree.getRoot().getLeft().setLeft(new Node(4));
-                tree.getRoot().getLeft().setRight(new Node(5));
+                BinaryTree<Integer> tree = new BinaryTree<>();
+                tree.setRoot(1);
+                tree.getRoot().setLeft(2);
+                tree.getRoot().setRight(3);
+                tree.getRoot().getLeft().setLeft(4);
+                tree.getRoot().getLeft().setRight(5);
 
                 System.out.println("Preorder traversal of binary tree is ");
                 tree.printPreorder();
@@ -316,7 +315,7 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        testDataStructures(2);
+        testTree(0);
     }
 
 }
