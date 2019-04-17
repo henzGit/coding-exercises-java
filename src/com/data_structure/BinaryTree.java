@@ -33,6 +33,10 @@ public class BinaryTree<E>
         public Node<E> getRight() {
             return this.right;
         }
+
+        public E getItem() {
+            return this.item;
+        }
     }
 
     // Root of Binary Tree
