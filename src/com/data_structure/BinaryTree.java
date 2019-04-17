@@ -1,4 +1,4 @@
-package com.tree_traversal;
+package com.data_structure;
 
 public class BinaryTree<E>
 {
