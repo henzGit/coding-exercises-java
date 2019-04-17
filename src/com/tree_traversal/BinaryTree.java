@@ -1,49 +1,54 @@
 package com.tree_traversal;
 
-public class BinaryTree
+public class BinaryTree<E>
 {
-    public static class Node
+    /**
+     * Node containing an element
+     */
+    public static class Node<E>
     {
-        int key;
-        public Node left, right;
+        // element in the node
+        E item;
+        // pointer to left and right
+        Node<E> left, right;
 
-        public Node(int item)
+        public Node(E item)
         {
-            key = item;
-            left = right = null;
+            this.item = item;
+            this.left = this.right = null;
         }
 
-        public void setLeft(Node left) {
-            this.left = left;
+        public void setLeft(E e) {
+            this.left = new Node<>(e);
         }
 
-        public void setRight(Node right) {
-            this.right = right;
+        public void setRight(E e) {
+            this.right = new Node<>(e);
         }
 
-        public Node getLeft() {
-            return left;
+        public Node<E> getLeft() {
+            return this.left;
         }
 
-        public Node getRight() {
-            return right;
+        public Node<E> getRight() {
+            return this.right;
         }
     }
 
     // Root of Binary Tree
-    private Node root;
+    private Node<E> root;
 
     public BinaryTree()
     {
-        root = null;
+        this.root = null;
     }
 
-    public void setRoot(Node root) {
-        this.root = root;
+    public void setRoot(E e) {
+        this.root = new Node<>(e);
     }
 
-    public Node getRoot() {
-        return root;
+    public Node<E> getRoot() {
+        return this.root;
     }
 
     /* Given a binary tree, print its nodes according to the
@@ -60,7 +65,7 @@ public class BinaryTree
         printPostorder(node.right);
 
         // now deal with the node
-        System.out.print(node.key + " ");
+        System.out.print(node.item + " ");
     }
 
     /* Given a binary tree, print its nodes in inorder*/
@@ -73,7 +78,7 @@ public class BinaryTree
         printInorder(node.left);
 
         /* then print the data of node */
-        System.out.print(node.key + " ");
+        System.out.print(node.item + " ");
 
         /* now recur on right child */
         printInorder(node.right);
@@ -86,7 +91,7 @@ public class BinaryTree
             return;
 
         /* first print data of node */
-        System.out.print(node.key + " ");
+        System.out.print(node.item + " ");
 
         /* then recur on left sutree */
         printPreorder(node.left);
@@ -96,9 +101,9 @@ public class BinaryTree
     }
 
     // Wrappers over above recursive functions
-    public void printPostorder() {	 printPostorder(root); }
-    public void printInorder()   {	 printInorder(root); }
-    public void printPreorder()  {	 printPreorder(root); }
+    public void printPostorder() { printPostorder(root); }
+    public void printInorder()   { printInorder(root); }
+    public void printPreorder()  { printPreorder(root); }
 
 }
 
