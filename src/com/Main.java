@@ -329,19 +329,27 @@ public class Main {
      * @param selection number of selected test case
      */
     public static void testCodility(int selection) {
+        Solution solution = new Solution();
+        int result;
         switch (selection) {
             case 0:
-                Solution solution = new Solution();
                 int[] A = {1, 3, 6, 4, 1, 2};
 //                int[] A = {-1, -3};
 //                int[] A = {1, 2, 3};
-                solution.smallestPositiveIntegerNotOccurInArray(A);
+                result = solution.smallestPositiveIntegerNotOccurInArray(A);
+            case 1:
+                int[] input = {102, 955, 1651};
+                for(int i: input) {
+                    result = solution.findBinaryPeriodOfAnInt(i);
+                    System.out.println("result: " + result);
+                }
+
         }
     }
 
 
     public static void main(String[] args) {
-        testCodility(0);
+        testCodility(1);
     }
 
 }
