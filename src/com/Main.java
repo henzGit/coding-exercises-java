@@ -6,6 +6,7 @@ import java.util.*;
 
 import com.algorithm.SortAlgorithm;
 import com.algorithm.SearchAlgorithm;
+import com.codility.Solution;
 import com.data_structure.CustomHashMap;
 import com.data_structure.LRUCache;
 import com.data_structure.SinglyLinkedList;
@@ -322,9 +323,25 @@ public class Main {
                 break;
         }
     }
-    
+
+    /**
+     * Selection of test case for Codility problems
+     * @param selection number of selected test case
+     */
+    public static void testCodility(int selection) {
+        switch (selection) {
+            case 0:
+                Solution solution = new Solution();
+                int[] A = {1, 3, 6, 4, 1, 2};
+//                int[] A = {-1, -3};
+//                int[] A = {1, 2, 3};
+                solution.smallestPositiveIntegerNotOccurInArray(A);
+        }
+    }
+
+
     public static void main(String[] args) {
-        testTree(0);
+        testCodility(0);
     }
 
 }
