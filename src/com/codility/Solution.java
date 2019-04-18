@@ -1,7 +1,6 @@
 package com.codility;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Class of Codility Solution
@@ -39,5 +38,35 @@ public class Solution {
         if (containsAllFlag && maxNumber > 0) smallestNum = maxNumber+1;
 
         return smallestNum;
+    }
+
+    /**
+     * Function to calculate the binary period of an integer
+     * @param n the input integer
+     * @return the binary period of input integer
+     *
+     * A non-empty zero-indexed string S consisting of Q characters is given.
+     * The period of this string is the smallest positive integer P such that:
+     * P≤Q/2 and S[K]=S[K+P] for 0≤K<Q−P.
+     * So for example, for the integers 955, 1651 and 102, convert the
+     * numbers to binary and the function should return 4,5,-1 respectively.
+     * The function returns -1 if there is no binary period for the given integer.
+     * The int n can be any value between 1 to 99999999
+     */
+    public int findBinaryPeriodOfAnInt(int n) {
+        String base2 = Integer.toString(n, 2);
+        int len = base2.length();
+
+        for (int j = 2; j <= len/2; j++) {
+            String substr = base2.substring(0, j);
+            int beginIndex2 = j;
+            int endIndex2 = 2*j;
+            if (endIndex2 < len) {
+                String substr2 = base2.substring(beginIndex2, endIndex2);
+                if (substr.equals(substr2)) return substr.length();
+            }
+        }
+        return -1;
+
     }
 }
