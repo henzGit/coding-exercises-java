@@ -333,10 +333,10 @@ public class Main {
         int result;
         switch (selection) {
             case 0:
-                int[] A = {1, 3, 6, 4, 1, 2};
-//                int[] A = {-1, -3};
-//                int[] A = {1, 2, 3};
-                result = solution.smallestPositiveIntegerNotOccurInArray(A);
+                int[] A1 = {1, 3, 6, 4, 1, 2};
+                int[] A2 = {-1, -3};
+                int[] A3 = {1, 2, 3};
+                result = solution.smallestPositiveIntegerNotOccurInArray(A1);
             case 1:
                 int[] input = {102, 955, 1651};
                 for(int i: input) {
@@ -346,7 +346,6 @@ public class Main {
 
         }
     }
-
 
     public static void main(String[] args) {
         testCodility(1);
