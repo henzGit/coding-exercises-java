@@ -120,4 +120,71 @@ public class Solution {
         return maxDistance;
     }
 
+    /**
+     * Find a pair of indices (P, Q), such that A[P] == A[Q]+1
+     * and the distance between P and Q is maximal, that is
+     * the value Q − P is maximal.
+     * @param A input array
+     * @return maximal distance Q - P
+     */
+    public static int findMaxDistanceAdjacentIndices(int[] A) {
+        HashMap<Integer,MinMax> indicesMap = new HashMap<>();
+        for (int i = 0; i < A.length; i++) {
+            if (!indicesMap.containsKey(A[i])) {
+                MinMax minMax = new MinMax(i);
+                indicesMap.put(A[i], minMax);
+            } else {
+                MinMax minMax = indicesMap.get(A[i]);
+                minMax.setMax(i);
+            }
+        }
+        int[] sortedA = A.clone();
+        Arrays.sort(sortedA);
+        int length = sortedA.length;
+        int maxDistance = -1;
+        for (int i = 1; i < length; i++) {
+            int num1 = sortedA[length - i];
+            int num2 = sortedA[length - i - 1];
+            if (num1 != num2) {
+                maxDistance = Math.max(
+                        maxDistance,
+                        Math.abs(
+                                indicesMap.get(num1).getMax() - indicesMap.get(num2).getMin()
+                        )
+                );
+                maxDistance = Math.max(
+                        maxDistance,
+                        Math.abs(
+                                indicesMap.get(num2).getMax() - indicesMap.get(num1).getMin()
+                        )
+                );
+            }
+        }
+        return maxDistance;
+    }
+
+    /**
+     * Private class for findMaxDistanceAdjacentIndices function
+     */
+    private static class MinMax{
+        private int min = 0;
+        private int max = -1;
+
+        public MinMax(int min) {
+            this.min = min;
+        }
+
+        public void setMax(int max) {
+            this.max = max;
+        }
+
+        public int getMin() {
+            return min;
+        }
+
+        public int getMax() {
+            return max > 0? max : min;
+        }
+
+    }
 }
