@@ -343,12 +343,22 @@ public class Main {
                     result = solution.findBinaryPeriodOfAnInt(i);
                     System.out.println("result: " + result);
                 }
+            case 2:
+                int[] inputA = {10,9,8,7,6,5,4,3,2,1,10,11};
+                int[] inputA1 = {1,0,-1,-2,-3};
+                int[] inputA2 = {1,1,1,1,1,1};
+                int[] inputA3 = {};
+                int[] inputA4 = {1};
+                int[] inputA5 = {1,1};
+                int[] inputA6 = {1,2,3,4,5,6,7};
+                result = solution.findMaxDistanceMonotonic(inputA6);
+                System.out.println("result: " + result);
 
         }
     }
 
     public static void main(String[] args) {
-        testCodility(1);
+        testCodility(2);
     }
 
 }

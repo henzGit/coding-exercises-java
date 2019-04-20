@@ -67,6 +67,57 @@ public class Solution {
             }
         }
         return -1;
-
     }
+
+    /**
+     * Find a pair of indices (P, Q), such that A[P] <= A[Q]
+     * and the distance between P and Q is maximal, that is
+     * the value Q − P is maximal.
+     * @param A input array
+     * @return maximal distance Q - P
+     */
+    public int findMaxDistanceMonotonic(int[] A) {
+        int maxDistance = -1;
+
+        // find candidates for P
+        LinkedList<List<Integer>> candidates = new LinkedList<>();
+
+        for (int P = 0; P < A.length; P++) {
+            if (P == 0 || A[P] < candidates.getLast().get(0)) {
+                candidates.add(new ArrayList<>(Arrays.asList(A[P], P)));
+            }
+        }
+
+        // try to find pair P-Q from last index of A in descending order
+        for (int Q = A.length-1; Q >= 0; Q--) {
+            int i = 0;
+            while (candidates.size() > 0
+                    && i <= candidates.size()-1
+            ) {
+                List<Integer> currCandidate = candidates.get(i);
+                int currCandidateIndex = currCandidate.get(1);
+                int currCandidateValue = currCandidate.get(0);
+                // if Q - index of current candidate is less than max distance
+                // abort calculation since max distance has already been found
+                if ( (Q - currCandidateIndex) <= maxDistance) {
+                    return maxDistance;
+                }
+
+                if (A[Q] >= currCandidateValue) {
+                    // calculate max distance candidate given Q index
+                    int maxDistCandidate = Q-currCandidateIndex;
+                    if (maxDistCandidate > 0) {
+                        maxDistance = Math.max(
+                                maxDistance,
+                                maxDistCandidate);
+                        candidates.remove(i);
+                    }
+                }
+                i++;
+            }
+        }
+
+        return maxDistance;
+    }
+
 }
