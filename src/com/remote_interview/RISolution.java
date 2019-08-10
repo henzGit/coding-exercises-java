@@ -3,7 +3,7 @@ package com.remote_interview;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Solution {
+public class RISolution {
 
     /**
      * Print number of similar words
