@@ -19,7 +19,7 @@ public class LRUCache<K,V> {
     private Map<K,V> internalMap;
 
     /**
-     * Internal list used to check key freshness
+     * Internal queue used to check key freshness
      */
     private LinkedList<K> internalQueue;
 
