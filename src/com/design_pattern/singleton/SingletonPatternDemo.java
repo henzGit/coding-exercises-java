@@ -13,3 +13,4 @@ public class SingletonPatternDemo {
         //show the message
         object.showMessage();
     }
+}
