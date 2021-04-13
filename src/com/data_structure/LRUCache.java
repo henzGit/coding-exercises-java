@@ -21,7 +21,7 @@ public class LRUCache<K,V> {
     /**
      * Internal list used to check key freshness
      */
-    private LinkedList<K> internalList;
+    private LinkedList<K> internalQueue;
 
     /**
      * Create LRUCache with fixed size
@@ -30,7 +30,7 @@ public class LRUCache<K,V> {
     public LRUCache(int cacheSize) {
         this.cacheSize = cacheSize;
         this.internalMap = new HashMap<>();
-        this.internalList = new LinkedList<>();
+        this.internalQueue = new LinkedList<>();
     }
 
     /**
@@ -40,8 +40,8 @@ public class LRUCache<K,V> {
      */
     public V get(K key) {
         if (!this.internalMap.containsKey(key)) return null;
-        this.internalList.remove(key);
-        this.internalList.addFirst(key);
+        this.internalQueue.remove(key);
+        this.internalQueue.add(key);
         return this.internalMap.get(key);
     }
 
@@ -53,13 +53,13 @@ public class LRUCache<K,V> {
     public void put(K key, V value) {
         // check if key already exists
         if (this.internalMap.containsKey(key)) {
-            this.internalList.remove(key);
+            this.internalQueue.remove(key);
         }
-        this.internalList.addFirst(key);
+        this.internalQueue.add(key);
         this.internalMap.put(key, value);
 
-        if (internalList.size() > this.cacheSize) {
-            K removedKey = this.internalList.removeLast();
+        if (internalQueue.size() > this.cacheSize) {
+            K removedKey = this.internalQueue.remove();
             this.internalMap.remove(removedKey);
         }
     }
@@ -72,7 +72,7 @@ public class LRUCache<K,V> {
      */
     public void remove(K key) {
         if (!this.internalMap.containsKey(key)) throw new NoSuchElementException();
-        this.internalList.remove(key);
+        this.internalQueue.remove(key);
         this.internalMap.remove(key);
     }
 
@@ -80,8 +80,8 @@ public class LRUCache<K,V> {
      * Remove least recently used element from internal list and internal map
      */
     public void evict() {
-        if (this.internalList.size() > 0 ) {
-            K removedKey = this.internalList.removeLast();
+        if (this.internalQueue.size() > 0 ) {
+            K removedKey = this.internalQueue.remove();
             this.internalMap.remove(removedKey);
         }
     }
@@ -90,7 +90,7 @@ public class LRUCache<K,V> {
      * Print content of LRU cache
      */
     public void printContent() {
-        System.out.println("internalList: "+ this.internalList.toString());
+        System.out.println("internalList: "+ this.internalQueue.toString());
         System.out.println("internalMap: " + this.internalMap.toString());
     }
 }
