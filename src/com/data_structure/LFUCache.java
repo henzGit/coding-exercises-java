@@ -57,28 +57,37 @@ public class LFUCache<K,V> {
             if (currentKeyFreq+1 >= nextKeyFreq) {
                 nextKeyIndex++;
             } else {
-                // need to move node associated with currentKey to new place
-                K nodeToBeInserted = this.internalQueue.remove(currentKeyIndex);
-                this.internalQueue.add(nextKeyIndex-1, nodeToBeInserted);
                 break;
             }
         }
+        // insert node associated with currentKey to new position in internalQueue
+        K nodeToBeInserted = this.internalQueue.remove(currentKeyIndex);
+        this.internalQueue.add(nextKeyIndex-1, nodeToBeInserted);
+
         this.frequencyMap.put(currentKey, currentKeyFreq+1);
     }
 
     private void updateFrequencyMapAndInternalQueueForNewKey(K newKey) {
         // insert newKey into internalQueue
         int nextKeyIndex = 0;
-        // if there is next Node from currentKeyIndex
-        while (nextKeyIndex < this.internalQueue.size()) {
-            K nextKey = this.internalQueue.get(nextKeyIndex);
-            int nextKeyFreq = this.frequencyMap.get(nextKey);
-            if (1 >= nextKeyFreq) {
-                nextKeyIndex++;
-            } else {
-                this.internalQueue.add(nextKeyIndex, newKey);
-                break;
+        if (internalQueue.size() == 0) {
+            this.internalQueue.add(newKey);
+        } else {
+            // if there is next Node from currentKeyIndex
+            while (nextKeyIndex < this.internalQueue.size()) {
+                K nextKey = this.internalQueue.get(nextKeyIndex);
+                int nextKeyFreq = this.frequencyMap.get(nextKey);
+                if (1 >= nextKeyFreq) {
+                    nextKeyIndex++;
+                }
+                else {
+                    break;
+                }
             }
+            // insert to second element if cache size is exceeded after addition
+            if (nextKeyIndex == 0 && this.internalQueue.size()+1 > this.cacheSize) nextKeyIndex++;
+
+            this.internalQueue.add(nextKeyIndex, newKey);
         }
         this.frequencyMap.put(newKey, 1);
     }
@@ -137,6 +146,7 @@ public class LFUCache<K,V> {
      * Print content of LRU cache
      */
     public void printContent() {
+        System.out.println();
         System.out.println("internalQueue: "+ this.internalQueue.toString());
         System.out.println("internalMap: " + this.internalMap.toString());
         System.out.println("frequencyMap: " + this.frequencyMap.toString());
