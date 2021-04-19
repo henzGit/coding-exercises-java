@@ -49,23 +49,38 @@ public class LFUCache<K,V> {
         int currentKeyFreq = this.frequencyMap.get(currentKey);
         int currentKeyIndex = this.internalQueue.indexOf(currentKey);
         int nextKeyIndex = currentKeyIndex+1;
+
         // if there is next Node from currentKeyIndex
-        if (nextKeyIndex < this.internalQueue.size()) {
+        while (nextKeyIndex < this.internalQueue.size()) {
             K nextKey = this.internalQueue.get(nextKeyIndex);
             int nextKeyFreq = this.frequencyMap.get(nextKey);
-            // swap currentKey and nextKey in internalQueue if currentKeyFreq+1 > nextKeyFreq
             if (currentKeyFreq+1 >= nextKeyFreq) {
-                this.internalQueue.set(currentKeyIndex, nextKey);
-                this.internalQueue.set(nextKeyIndex, currentKey);
+                nextKeyIndex++;
+            } else {
+                // need to move node associated with currentKey to new place
+                K nodeToBeInserted = this.internalQueue.remove(currentKeyIndex);
+                this.internalQueue.add(nextKeyIndex-1, nodeToBeInserted);
+                break;
             }
         }
         this.frequencyMap.put(currentKey, currentKeyFreq+1);
     }
 
     private void updateFrequencyMapAndInternalQueueForNewKey(K newKey) {
-        this.frequencyMap.put(newKey, 1);
         // insert newKey into internalQueue
-
+        int nextKeyIndex = 0;
+        // if there is next Node from currentKeyIndex
+        while (nextKeyIndex < this.internalQueue.size()) {
+            K nextKey = this.internalQueue.get(nextKeyIndex);
+            int nextKeyFreq = this.frequencyMap.get(nextKey);
+            if (1 >= nextKeyFreq) {
+                nextKeyIndex++;
+            } else {
+                this.internalQueue.add(nextKeyIndex, newKey);
+                break;
+            }
+        }
+        this.frequencyMap.put(newKey, 1);
     }
 
     /**
