@@ -15,7 +15,7 @@ import java.util.PriorityQueue;
  * }
  */
 
-public class LeetCodeSolution {
+public class MergeSortedKLists {
     public class ListNode {
         int val;
         ListNode next;
