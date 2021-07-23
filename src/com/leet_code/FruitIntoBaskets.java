@@ -22,8 +22,8 @@ public class FruitIntoBaskets {
         if (fruits.length <=2) return fruits.length;
 
         int maxSum = 0;
-        int[] k1 = {0, 0};
-        int[] k2 = {-1, -1};
+        int k1 = 0;
+        int k2 = -1;
         int type1 = fruits[0];
         int type2 = -1;
         int basket1 = 1, basket2 = 0;
@@ -31,35 +31,32 @@ public class FruitIntoBaskets {
         for(int i=1; i < fruits.length; i++) {
             if (fruits[i] == type1) {
                 basket1++;
-                k1[1] = i;
+                k1 = i;
             }
             else if (fruits[i] != type1 && basket2 == 0) {
                 basket2 = 1;
                 type2 = fruits[i];
-                k2[0] = i;
-                k2[1] = i;
+                k2 = i;
             }
             else if (fruits[i] == type2 && basket2 > 0) {
                 basket2++;
-                k2[1] = i;
+                k2 = i;
             }
             else if (fruits[i] != type1 && fruits[i] != type2) {
                 maxSum = Math.max(maxSum, basket1+basket2);
                 int newK1;
 
-                if(k1[1] > k2[1]) {
-                    newK1 = k2[1]+1;
+                if(k1 > k2) {
+                    newK1 = k2+1;
                 } else {
                     type1 = type2;
-                    newK1 = k1[1]+1;
-                    k1[1] = k2[1];
+                    newK1 = k1+1;
+                    k1 = k2;
                 }
                 basket1 = i - newK1;
-                k1[0] = newK1;
                 basket2 = 1;
                 type2 = fruits[i];
-                k2[0] = i;
-                k2[1] = i;
+                k2 = i;
             }
         }
         return Math.max(maxSum, basket1+basket2);
