@@ -22,12 +22,12 @@ public class MeetingRoomsII {
         minHeap.add(intervals[0]);
         for(int i=1; i<intervals.length; i++) {
             Interval min = minHeap.remove();
-            if (min.end < intervals[i].start) {
+            if (min.end <= intervals[i].start) {
                 min.end = intervals[i].end;
             } else {
                 minHeap.add(intervals[i]);
             }
-            
+
             minHeap.add(min);
         }
         return minHeap.size();
