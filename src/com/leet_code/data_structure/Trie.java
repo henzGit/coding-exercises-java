@@ -1,18 +1,6 @@
 package com.leet_code.data_structure;
 import java.util.*;
 
-class Node {
-    char value;
-    Map<Character, Node> children;
-    boolean endOfWord;
-
-    public Node(char value) {
-        this.value = value;
-        children = new HashMap<>();
-        endOfWord = false;
-    }
-}
-
 /**
  * A trie (pronounced as "try") or prefix tree is a tree data structure used
  * to efficiently store and retrieve keys in a dataset of strings.
@@ -28,6 +16,17 @@ class Node {
  * string word that has the prefix prefix, and false otherwise.
  */
 class Trie {
+    static class Node {
+        char value;
+        Map<Character, Node> children;
+        boolean endOfWord;
+
+        public Node(char value) {
+            this.value = value;
+            children = new HashMap<>();
+            endOfWord = false;
+        }
+    }
 
     Node root;
     /** Initialize your data structure here. */
