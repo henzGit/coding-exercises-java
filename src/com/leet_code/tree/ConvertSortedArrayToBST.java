@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.tree;
 
 /**
  * Given an integer array nums where the elements are sorted in ascending order,

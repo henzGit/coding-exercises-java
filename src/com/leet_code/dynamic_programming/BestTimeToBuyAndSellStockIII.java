@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.dynamic_programming;
 
 /**
  * You are given an array prices where prices[i] is the price of a given stock on the ith day.

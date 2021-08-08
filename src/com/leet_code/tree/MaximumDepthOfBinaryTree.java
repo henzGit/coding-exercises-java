@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.tree;
 public class MaximumDepthOfBinaryTree {
     class TreeNode {
         int val;

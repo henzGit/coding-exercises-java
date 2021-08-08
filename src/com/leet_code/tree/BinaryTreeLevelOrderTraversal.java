@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.tree;
 import java.util.*;
 /**
  *
