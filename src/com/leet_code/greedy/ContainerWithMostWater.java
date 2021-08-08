@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.greedy;
 
 /**
  * Given n non-negative integers a1, a2, ..., an ,

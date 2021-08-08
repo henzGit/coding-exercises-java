@@ -21,7 +21,6 @@ public class ReverseWordsInAString {
         for(String string: strings) {
             if (string.length() > 0) out = string + " " + out ;
         }
-
         return out.strip();
     }
 }

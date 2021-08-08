@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.data_structure;
 
 /**
  * Merge two sorted linked lists and return it as a sorted list.
@@ -6,6 +6,14 @@ package com.leet_code;
  * https://leetcode.com/problems/merge-two-sorted-lists/
  */
 public class MergeTwoSortedLists {
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null && l2 == null) return null;
 

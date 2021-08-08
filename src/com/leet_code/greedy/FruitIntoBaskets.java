@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.greedy;
 
 /**
  * You are visiting a farm that has a single row of fruit trees arranged from left to right.

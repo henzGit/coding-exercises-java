@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.palindrome;
 
 /**
  * Given a string s, return the longest palindromic substring in s.

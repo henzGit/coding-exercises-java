@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.dfs;
 
 public class BattleshipsInABoard {
     public int countBattleships(char[][] board) {

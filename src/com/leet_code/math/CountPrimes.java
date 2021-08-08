@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.math;
 
 /**
  * Count the number of prime numbers less than a non-negative number, n.

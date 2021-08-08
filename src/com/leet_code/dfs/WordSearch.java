@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.dfs;
 
 /**
  * Given an m x n grid of characters board and a string word, return true if word exists in the grid.
