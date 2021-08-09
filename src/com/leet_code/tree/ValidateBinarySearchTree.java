@@ -23,7 +23,7 @@ public class ValidateBinarySearchTree {
             this.right = right;
         }
     }
-    
+
     public boolean isValidBST(TreeNode root) {
         return isValid(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
