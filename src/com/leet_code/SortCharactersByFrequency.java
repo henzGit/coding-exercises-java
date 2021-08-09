@@ -1,6 +1,11 @@
 package com.leet_code;
 import java.util.*;
 
+/**
+ * Given a string s, sort it in decreasing order based on the frequency
+ * of characters, and return the sorted string.
+ * https://leetcode.com/problems/sort-characters-by-frequency/
+ */
 public class SortCharactersByFrequency {
     public String frequencySort(String s) {
         Map<Character,Integer> map = new HashMap<>();
