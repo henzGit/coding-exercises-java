@@ -1,4 +1,4 @@
-package com.leet_code.dfs;
+package com.leet_code.backtracking;
 
 /**
  * Given an m x n grid of characters board and a string word, return true if word exists in the grid.
