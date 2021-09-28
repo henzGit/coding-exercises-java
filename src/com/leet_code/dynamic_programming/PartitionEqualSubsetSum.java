@@ -1,5 +1,11 @@
 package com.leet_code.dynamic_programming;
 
+/**
+ * Given a non-empty array nums containing only positive integers,
+ * find if the array can be partitioned into two subsets such that the sum of
+ * elements in both subsets is equal.
+ * https://leetcode.com/problems/partition-equal-subset-sum/
+ */
 public class PartitionEqualSubsetSum {
     Boolean[] memo;
     public boolean canPartition(int[] nums) {
