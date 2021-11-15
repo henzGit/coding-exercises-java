@@ -20,19 +20,20 @@ public class CombinationSumII {
 
     private void findSums(List<List<Integer>> out, int[] candidates, int target,
                           List<Integer> cur, int index) {
-        if(target < 0) return;
-        if(target == 0) {
+        if (target < 0) return;
+        if (target == 0) {
             out.add(new ArrayList<>(cur));
             return;
         }
 
-        for(int i = index; i < candidates.length; i++) {
-            if(i == index || candidates[i] != candidates[i-1]) {
+        for (int i = index; i < candidates.length; i++) {
+            if (i == index || candidates[i] != candidates[i - 1]) {
                 cur.add(candidates[i]);
-                findSums(out, candidates, target-candidates[i], cur, i+1);
-                cur.remove(cur.size()-1);
+                findSums(out, candidates, target - candidates[i], cur, i + 1);
+                cur.remove(cur.size() - 1);
 
             }
         }
 
     }
+}
