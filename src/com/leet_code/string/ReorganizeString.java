@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.string;
 import java.util.*;
 /**
  * Given a string s, rearrange the characters of s so that any two adjacent characters are not the same.

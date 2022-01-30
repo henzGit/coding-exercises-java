@@ -1,4 +1,4 @@
-package com.leet_code;
+package com.leet_code.string;
 
 /**
  * Given an input string s, reverse the order of the words.
