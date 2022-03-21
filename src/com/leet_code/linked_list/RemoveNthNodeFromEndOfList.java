@@ -10,7 +10,7 @@ public class RemoveNthNodeFromEndOfList {
         ListNode next;
         ListNode() {}
         ListNode(int val) { this.val = val; }
-        ListNode(int val, MergeTwoSortedLists.ListNode next) { this.val = val; this.next = next; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head.next == null) return null;
@@ -24,7 +24,7 @@ public class RemoveNthNodeFromEndOfList {
         if(n == len) {
             return head.next;
         }
-        
+
         int i = len - n - 1;
         while( i > 0 ) {
             p = p.next;

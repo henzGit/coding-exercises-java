@@ -6,7 +6,7 @@ package com.leet_code.linked_list;
  * https://leetcode.com/problems/merge-two-sorted-lists/
  */
 public class MergeTwoSortedLists {
-    static class ListNode {
+    class ListNode {
         int val;
         ListNode next;
         ListNode() {}
