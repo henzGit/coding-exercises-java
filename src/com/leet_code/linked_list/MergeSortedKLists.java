@@ -1,4 +1,4 @@
-package com.leet_code.data_structure;
+package com.leet_code.linked_list;
 
 import java.util.PriorityQueue;
 

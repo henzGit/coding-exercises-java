@@ -1,4 +1,4 @@
-package com.leet_code.data_structure;
+package com.leet_code.linked_list;
 
 /**
  * Given the head of a singly linked list, reverse the list, and return the reversed list.

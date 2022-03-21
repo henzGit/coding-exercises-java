@@ -1,4 +1,4 @@
-package com.leet_code.data_structure;
+package com.leet_code.linked_list;
 
 /**
  * Given head, the head of a linked list, determine if the linked list has a cycle in it.
