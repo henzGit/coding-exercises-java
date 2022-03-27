@@ -28,10 +28,7 @@ public class ReorderList {
             ListNode tmp2 = second.next;
             head.next = second;
 
-            if(tmp1 == second) {
-                second.next = null;
-                break;
-            }
+            if(tmp1 == second) break;
             else second.next = tmp1;
 
             head = tmp1;
